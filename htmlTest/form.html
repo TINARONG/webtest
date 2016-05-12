@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <form>
+            <div>
+                <label for="tx" class="biaoti">头像</label><input type="file" name="touxiang" value="tx" id="tx">
+            </div>
+            <div>
+                <label for="nc" class="biaoti">昵称</label><input type="text" id="nc">
+            </div>
+            <div>
+                <label for="xl" class="biaoti">学历</label>
+                <select id="xl">
+                    <option value="dz">大专</option>
+                    <option value="bk">本科</option>
+                </select>
+            </div>
+            <div>
+                <label class="biaoti" >性别</label>
+                <input type="radio" value="man" name="xb" id="man"><label for="man">男</label>
+                <input type="radio" value="woman" name="xb" id="woman"><label for="woman">女</label>
+            </div>
+            <div>
+                <label class="biaoti">爱好</label>
+                <input type="checkbox" id="dy" name="ah" value="1"><label for="dy">电影</label>
+                <input type="checkbox" id="sy" name="ah" value="2"><label for="sy">摄影</label>
+                <input type="checkbox" id="yy" name="ah" value="3"><label for="yy">音乐</label>
+                <input type="checkbox" id="yd" name="ah" value="4"><label for="yd">阅读</label>
+            </div>
+            <div>
+                <label class="biaoti" id="qm1">签名</label>
+                <textarea name="qm" id="qm" rows="5" ></textarea>
+            </div>
+        <button type="submit">保存</button>
+    </form>
+</body>
+</html>

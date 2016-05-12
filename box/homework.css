@@ -1,0 +1,59 @@
+div .box1{
+    height: 200px;
+    width: 200px;
+     border: solid 1px;
+    display:inline-block;
+    position:absolute;
+    text-align: center;
+    line-height: 200px;
+
+}
+.box{
+    position:relative;top: 150px;
+    margin: auto;
+    height: 200px;
+    width: 200px;
+    animation: box linear 5s infinite 12s;
+    transform-style: preserve-3D;
+}
+.box div{
+    transition:3s all;
+}
+body{
+    height: 100%;
+    width: 100%;
+    perspective:1000px;
+}
+#top{animation: top linear 2s both;  }
+#bottom{animation: bottom linear 2s 2s both;  }
+#left{animation: left linear 2s 4s both;  }
+#right{animation: right linear 2s 6s both;  }
+#back{ animation: back linear 2s 8s both;  }
+#front{animation: front linear 2s 10s both;  }
+@keyframes top {
+    100%{transform: rotateX(-90deg) translateZ(-100px);  }
+}
+@keyframes bottom {
+    100%{transform: rotateX(90deg) translateZ(-100px);  }
+}
+@keyframes left {
+    100%{transform: rotateY(90deg) translateZ(-100px);  }
+}
+@keyframes right {
+     100%{transform: rotateY(-90deg) translateZ(-100px); }
+ }
+@keyframes back{
+    100%{transform: rotateY(180deg) translateZ(100px);}
+}
+@keyframes front{
+    100%{transform:translateZ(100px);}
+}
+@keyframes box{
+    100%{transform: rotate3d(1,1,1,360deg);}
+}
+div.box:hover #top{background-color: aqua;color:white;}
+div.box:hover #bottom{background-color: beige;color:white;}
+div.box:hover #left{background-color: gold;color:white;}
+div.box:hover #right{background-color: aliceblue;color:white;}
+div.box:hover #front{background-color: brown;color:white;}
+div.box:hover #back{background-color: darksalmon;color:white;}
