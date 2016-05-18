@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function type(obj){
+            return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
+        }
+        if(typeof Object.create != "function"){
+            Object.create = (function(){
+                var temp = function(){};
+                return function (proto){
+                    if(typeof proto != "object"){
+                        throw TypeError("proto必须为对象或null");
+                    }
+                    temp.prototype = proto;
+                    var obj = new temp();
+                    temp.prototype = null;
+                    return obj;
+                }
+            })()
+        }
+
+        function fibonacci(n){
+            if(typeof n != "number" || n%1 != 0){
+                throw TypeError("n必须为整数")
+            }
+            if(n == 0){
+                return 0
+            }else if (n == 1){
+                return 1
+            }
+            return fibonacci(n-1) + fibonacci(n-2);
+        }
+
+    if (typeof Function.prototype.bind != 'function') {
+        Function.prototype.bind = function (oThis) {
+            if (typeof this !== "function") {
+                throw new TypeError("bind函数只能被函数调用");
+            }
+
+            var aArgs = Array.prototype.slice.call(arguments, 1),
+                    fToBind = this,
+                    fNOP = function () {},
+                    fBound = function () {
+                        return fToBind.apply(this instanceof fNOP
+                                        ? this
+                                        : oThis || this,
+                                aArgs.concat(Array.prototype.slice.call(arguments)));
+                    };
+
+            fNOP.prototype = this.prototype;
+            fBound.prototype = new fNOP();
+
+            return fBound;
+        };
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    function myType(param){
+//        return Object.prototype.toString.call(param).slice(8,-1);
+//    }
+function formatDate(date,pattern){
+    var regList = {
+        "M+": date.getMonth() + 1, //月份
+        "d+": date.getDate(), //日
+        "H+": date.getHours(), //小时
+        "m+": date.getMinutes(), //分
+        "s+": date.getSeconds() //秒
+    };
+    if (/(y+)/.test(pattern)) {
+        pattern = pattern.replace(RegExp.$1, date.getFullYear());
+    }
+    for (var key in regList){
+        if (new RegExp("(" + key + ")").test(pattern)) {
+            pattern = pattern.replace(RegExp.$1,(regList[key]<10?"0"+regList[key]:regList[key]));
+        }
+    }
+    return pattern;
+}
+var date = formatDate(new Date(),'yyyy-MM-dd HH:mm:ss');
+</script>
+</body>
+</html>
