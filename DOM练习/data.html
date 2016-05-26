@@ -46,28 +46,6 @@
             $("card").style.display = "none";
         }
     }
-//    function myType(param){
-//        return Object.prototye.ptoString.call(param).slice(8,-1);
-//    }
-function formatDate(date,pattern){
-    var regList = {
-        "M+": data.getMonth() + 1, //月份
-        "d+": data.getDate(), //日
-        "H+": data.getHours(), //小时
-        "m+": data.getMinutes(), //分
-        "s+": data.getSeconds() //秒
-    };
-    if (/(y+)/.test(pattern)) {
-        pattern = pattern.replace(RegExp.$1, data.getFullYear());
-    }
-    for (var key in regList){
-        if (new RegExp("(" + key + ")").test(pattern)) {
-            pattern = pattern.replace(RegExp.$1,(regList[key]<10?"0"+regList[key]:regList[key]));
-        }
-    }
-    return pattern;
-}
-var date = formatDate(new Date(),'yyyy-MM-dd HH:mm:ss');
 </script>
 </body>
 </html>
