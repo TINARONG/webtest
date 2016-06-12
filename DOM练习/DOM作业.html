@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="example" style="width: 100px;height: 100px;background-color: #66ccff">
+        <p id="p1" class="aaa bbb"/>
+        <p id="p2" class="aaa ccc"/>
+        <p id="p3" class="bbb ccc"/>
+    </div>
+    <script>
+        //getElementsByClassName的兼容函数
+        function getElementByClassName(element, names) {
+            if(element.getElementsByClassName){
+                return element.getElementsByClassName("names");
+            }
+            var result = [];
+            var names = names.split(" ");
+            var flag;
+            var elements = element.getElementsByTagName("*");
+            for (var i = 0; elements[i]; i++) {
+                var classNameStr = elements[i].className;
+                var classList = classNameStr.split(' ');
+                flag = true;
+                for(var j = 0,name;name = names[j];j++){
+                    if(classList.indexOf(name) == -1){
+                        flag = false;
+                        break;
+                    }
+                }
+                if(flag){
+                    result.push(elements[i]);
+                }
+            }
+            return result;
+        }
+
+        //getCookies()解析document.cookie，并返回一个对象，该对象的属性名为cookie的name，属性值为cookie的value。
+        function getCookies(){
+            var result = {};
+            var cookie = document.cookie;
+            if (cookie ==="")
+            return cookie;
+            var list = cookie.split("; ");
+            for(var i = 0;i<list.length;i++){
+               var temp = list[i].split("=");
+                result[temp[0]]=temp[1];
+            }
+            return result;
+        }
+        /**
+         *实现了元素的淡出效果（即透明度从1变到0），动画时间为1秒钟。
+         * @param element 透明渐变元素
+         */
+        function  fadeout(element){
+            var v = 1,avg = 0.1;
+            var timer = setInterval(function (){
+                if(v-avg >= 0){
+                    v -= avg;
+                    element.style.opacity = v;
+                }else {
+                    clearInterval(timer);
+                }
+            },100);
+        }
+    </script>
+</body>
+</html>
